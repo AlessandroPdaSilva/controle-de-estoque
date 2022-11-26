@@ -1,37 +1,43 @@
 
 <!-- Barra de navegacao-->
+<nav [hidden]="esconderBarra()">
+  <input type="checkbox" id="check" checked="false">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" [hidden]="esconderBarra()">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-	  
-	  <li class="nav-item">
-        <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="nav-link">Home</a>
-	  </li>
-	  
-	  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Menu
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" >Usuario</a>
-          <a class="dropdown-item" [routerLink]="['/usuarioRelatorio']" routerLinkActive="router-link-active" >Relatorio</a>
-          
-        </div>
-    </li>
+  <label for="check" id="botao-check" >
+    <img id="img-botao-check" src="assets/botao-sidebar.png">
+  </label>
 
-    <li class="nav-item">
-      <a (click) = "logout()" class="nav-link">Deslogar</a>
-    </li>
+  <!--sidebar começo-->
+  <div class="sidebar">
       
-    </ul>
+
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="nav-link"><span>Home</span></a>
+      <a class="dropdown-item" [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" ><span>Usuario</span></a>
+      <a class="dropdown-item" [routerLink]="['/usuarioRelatorio']" routerLinkActive="router-link-active" ><span>Relatorio</span></a>
+          
+      <a (click) = "logout()" class="nav-link"><span>Deslogar</span></a>
+      
   </div>
+  <!--sidebar final-->
 </nav>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
 
 <!-- VIEW -->
 <router-outlet></router-outlet>
