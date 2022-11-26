@@ -1,0 +1,104 @@
+
+
+<form style="padding: 3%;" #formValidate="ngForm" >
+
+  <h2>Tela de Usuario</h2>
+  <br>
+
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input [(ngModel)]="usuario.id" id="id" name="id" type="text" class="form-control" readonly >
+  </div>
+
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <span style="color:red; font-size: 23px;" *ngIf="nomeValidate.invalid"> * </span>
+    <input [(ngModel)]="usuario.nome" id="nome" name="nome" #nomeValidate="ngModel" type="text" required="true" class="form-control" >
+  </div>
+
+
+
+
+  <div class="form-row align-items-center"> 
+      <div class="form-group col-md-3">
+        
+        <label for="dataNascimento">Data de Nascimento</label>
+        
+        <div class="input-group">
+          <span style="color:red; font-size: 23px;" *ngIf="dataNascimentoValidate.invalid"> * </span>
+            <input name="dataNascimento" id="dataNascimento" type="text" class="form-control" placeholder="dd/mm/yyyy"
+              ngbDatepicker #dataNascimento="ngbDatepicker" [(ngModel)] = "usuario.dataNascimento" #dataNascimentoValidate="ngModel">
+
+            <div class="input-group-append">
+                <button class="btn btn-primary" (click)="dataNascimento.toggle()" type="button"></button>
+            </div>
+
+        </div>
+        
+      </div> 
+
+      <div class="form-group col-md-3">
+        
+        <label for="profissao">Profissao</label>
+
+        <div class="input-group">
+
+            
+            <select [(ngModel)]="usuario.profissao" id="profissao" name="profissao" 
+            #profissaoValidate="ngModel" type="text" class="form-control" >
+              
+              <option *ngFor="let p of listaProfissao" [ngValue]="p" > {{p.descricao}}</option>
+            </select>
+          
+
+        </div>
+        
+      </div> 
+  
+    </div>
+   
+
+
+
+  <div class="form-group">
+    <label for="login">Login</label>
+    <span style="color:red; font-size: 23px;" *ngIf="loginValidate.invalid"> * </span>
+    <input [(ngModel)]="usuario.login" id="login" name="login" #loginValidate="ngModel" type="text" required="true" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input [(ngModel)]="usuario.senha" id="senha" name="senha" type="password" class="form-control" >
+  </div>
+   
+
+  <div class="form-inline">
+    
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="numero">Telefone</label>
+      <input type="text" [(ngModel)]="telefone.numero" mask="(00) 0 0000-0000" id="numero" name="numero"  class="form-control" >
+    </div>
+
+    <button (click)="addTelefone()" type="button" class="btn btn-primary mb-2">adicionar</button>
+
+  </div>
+
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let fone of usuario.listaTelefone; let i = index">
+         <td>{{fone.id}}</td>
+         <td>{{fone.numero}}</td>
+         <td><button (click)="deletarTelefone(fone.id, i)" class="btn btn-danger" >Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  
+
+
+  <button (click)='salvarUsuario()' [disabled]="formValidate.invalid" type="submit" class="btn btn-primary">Salvar</button>
+  <button (click)='novoUsuario()' type="button" class="btn btn-primary" style="margin-left: 5px;">Novo</button>
+  <button [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para usuarios</button>
+
+</form>

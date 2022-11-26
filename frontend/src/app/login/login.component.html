@@ -1,0 +1,58 @@
+
+<main class="text-center form-signin w-100 m-auto main">
+  <form>
+    <img class="mb-4" src="/assets/logo-editor.jpg" alt="" width="250" height="90">
+
+    <div class="form-floating">
+      <input [(ngModel)] = "usuario.login" name="login" #login="ngModel" required type="email" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Login" >
+    </div>
+    
+    <div class="form-floating">
+      <input [(ngModel)] = "usuario.senha" name="senha" #senha="ngModel" required type="password" class="form-control" id="senha" placeholder="Senha">
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Manter conectado
+      </label>
+    </div>
+
+    <button [disabled]="login.invalid || senha.invalid" (click)="logar()"  type="submit" class="w-100 btn btn-lg btn-primary">Acessar</button>
+    <button [disabled]="login.invalid" (click)="recuperarConta()"  type="button" class="btn btn-link" style="margin-left: 10px;">Esqueci senha</button>
+
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2022–2023</p>
+  </form>
+</main>
+
+
+
+
+
+
+
+<!---
+<form id="formlogin">
+
+  <div class="form-group">
+    <label for="login">Login</label>
+    <input [(ngModel)] = "usuario.login" name="login" #login="ngModel" required type="email" class="form-control" id="login" aria-describedby="emailHelp" placeholder="" >
+  </div>
+
+    <div *ngIf="login.invalid" class="alert alert-danger" role="alert">
+      informe o login
+    </div>
+
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input [(ngModel)] = "usuario.senha" name="senha" #senha="ngModel" required type="password" class="form-control" id="senha" placeholder="">
+  </div>
+
+    <div *ngIf="senha.invalid" class="alert alert-danger" role="alert">
+      informe a senha
+    </div>
+ 
+  <button [disabled]="login.invalid || senha.invalid" (click)="logar()"  type="submit" class="btn btn-primary">Enviar</button>
+  <button [disabled]="login.invalid" (click)="recuperarConta()"  type="button" class="btn btn-primary" style="margin-left: 10px;">Esqueci senha</button>
+</form>
+--->
