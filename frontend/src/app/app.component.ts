@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   title = 'angular8-restfull';
+  @ViewChild('checkboxSidebar') checkboxSidebar!: ElementRef;
 
   constructor(private router: Router){}
 
@@ -35,6 +36,10 @@ export class AppComponent implements OnInit {
     }else{
       return true;
     }
+  }
+
+  public closeSidebar(){
+    this.checkboxSidebar.nativeElement.checked = false
   }
 
 

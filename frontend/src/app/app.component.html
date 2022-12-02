@@ -1,24 +1,26 @@
 
 <!-- Barra de navegacao-->
 <nav [hidden]="esconderBarra()">
-  <input type="checkbox" id="check" checked="false">
 
+  <input type="checkbox" id="check" #checkboxSidebar> 
+
+  <!-- botao -->
   <label for="check" id="botao-check" >
     <img id="img-botao-check" src="assets/botao-sidebar.png">
   </label>
 
-  <!--sidebar começo-->
+  <!--sidebar-->
   <div class="sidebar">
       
 
-      <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="nav-link"><span>Home</span></a>
-      <a class="dropdown-item" [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" ><span>Usuario</span></a>
-      <a class="dropdown-item" [routerLink]="['/usuarioRelatorio']" routerLinkActive="router-link-active" ><span>Relatorio</span></a>
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active" (click) = "closeSidebar()"><span>Home</span></a>
+      <a [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" (click) = "closeSidebar()"><span>Usuario</span></a>
+      <a [routerLink]="['/usuarioRelatorio']" routerLinkActive="router-link-active" (click) = "closeSidebar()"><span>Relatorio</span></a>
           
       <a (click) = "logout()" class="nav-link"><span>Deslogar</span></a>
       
   </div>
-  <!--sidebar final-->
+  
 </nav>
 
 

@@ -44,7 +44,7 @@ header{
     height: 100%;
     margin-top: 0px;
     padding-top: 60px;
-    left: 0;
+    left: -290px;
     background: #193446;
     transition: 0.5s;
     transition-property: left;
@@ -93,26 +93,9 @@ label #sidebar_btn:hover{
     color: #51b3ec;
 }
 #check:checked ~ .sidebar{
-    left: -290px;
+    left: 0px;
 }
-#check:checked ~ .sidebar a span{
-    display: none;
-}
-#check:checked ~ .sidebar a{
-    font-size: 20px;
-    margin-left: 170px;
-    width: 80px;
-}
-.content{
-    background: url(/image/img-2.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    transition: 0.5s;
-}
-#check:checked ~ .content{
-    margin-left: 60px;
-}
+
 #check{
     display: none;
 }
