@@ -1,13 +1,20 @@
-#formlogin {
-	    margin-left: 15%;
-	    margin-right: 15%;
-	    margin-top: 15%;
+.main{
+	height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.ng-valid[required], ng-valid.required {
-	border-left: 5px solid #42a948; /*green*/
+.main p{
+	padding: 1% 15%;
+	text-align: justify;
 }
 
-.ng-invalid:not(form){
-	border-left: 5px solid #a94442; /*red*/
+@media (max-width: 800px){
+	.main img{
+		width: 90%;
+		height: 100%;
+	}
 }
