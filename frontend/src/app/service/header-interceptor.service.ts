@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 //import { ngModuleJitUrl } from '@angular/compiler';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { catchError, tap } from 'rxjs/operators';
 // Interceptador que request(POST,GET,PUT e etc)
 export class HeaderInterceptorService implements HttpInterceptor{
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   // INTERCEPTOR
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -61,7 +62,13 @@ export class HeaderInterceptorService implements HttpInterceptor{
 
     }
 
+    
     alert(errorMessage)
+    localStorage.clear();
+    
+    // Redirecionamento de pagina
+    this.router.navigate(['login'])
+
     return throwError(errorMessage);
   }
 
