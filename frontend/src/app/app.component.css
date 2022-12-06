@@ -101,7 +101,7 @@ label #sidebar_btn:hover{
 }
 
 #botao-check{
-    position: absolute;
+    position: fixed;
     z-index: 5;
     margin-top: 1%;
     margin-left: 1%;
@@ -109,4 +109,6 @@ label #sidebar_btn:hover{
 
 #img-botao-check{
     border-radius: 100%;
+    position: fixed;
+    z-index: 5;
 }
