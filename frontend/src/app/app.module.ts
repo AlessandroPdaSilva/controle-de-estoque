@@ -16,7 +16,7 @@ import {NgxMaskModule, IConfig} from 'ngx-mask';// Mascara de input
 import { NgxPaginationModule } from 'ngx-pagination';// Paginação
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UsuarioRelatorioComponent } from './component/usuario-relatorio/usuario-relatorio.component';
-import { ProdutoComponent } from './produto/produto.component';
+import { ProdutoComponent } from './component/produto/produto.component';
 
 
 
@@ -30,7 +30,7 @@ export const appRouters: Routes = [
   {path: 'usuarioAdd', component: UsuarioAddComponent, canActivate:[GuardiaoGuard] },
   {path: 'usuarioAdd/:id', component: UsuarioAddComponent,  canActivate:[GuardiaoGuard] },
   {path: 'usuarioRelatorio', component: UsuarioRelatorioComponent,  canActivate:[GuardiaoGuard] },
-  {path: 'produto', component: ProdutoComponent,  canActivate:[GuardiaoGuard] }
+  {path: 'produtoList', component: ProdutoComponent,  canActivate:[GuardiaoGuard] }
 ];
 
 
