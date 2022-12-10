@@ -63,6 +63,16 @@ public class ProdutoController {
         return new ResponseEntity<List<Produto>>(listaProduto,HttpStatus.OK);
     }
 
+    // CONSULTAR PRODUTO
+    @GetMapping(value = "/{id}")
+    public ResponseEntity consultarUsuario(@PathVariable(value = "id") Long id){
+
+        Produto p = produtoRepository.findById(id).get();
+
+        return new ResponseEntity<Produto>(p,HttpStatus.OK);
+    }
+
+
 
     // SALVAR PRODUTO
     @PostMapping(value = "")

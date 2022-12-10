@@ -17,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';// Paginação
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UsuarioRelatorioComponent } from './component/usuario-relatorio/usuario-relatorio.component';
 import { ProdutoComponent } from './component/produto/produto.component';
+import { ProdutoAddComponent } from './component/produto-add/produto-add.component';
 
 
 
@@ -30,7 +31,9 @@ export const appRouters: Routes = [
   {path: 'usuarioAdd', component: UsuarioAddComponent, canActivate:[GuardiaoGuard] },
   {path: 'usuarioAdd/:id', component: UsuarioAddComponent,  canActivate:[GuardiaoGuard] },
   {path: 'usuarioRelatorio', component: UsuarioRelatorioComponent,  canActivate:[GuardiaoGuard] },
-  {path: 'produtoList', component: ProdutoComponent,  canActivate:[GuardiaoGuard] }
+  {path: 'produtoList', component: ProdutoComponent,  canActivate:[GuardiaoGuard] },
+  {path: 'produtoAdd', component: ProdutoAddComponent, canActivate:[GuardiaoGuard] },
+  {path: 'produtoAdd/:id', component: ProdutoAddComponent,  canActivate:[GuardiaoGuard] }
 ];
 
 
@@ -46,7 +49,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     UsuarioComponent,
     UsuarioAddComponent,
     UsuarioRelatorioComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    ProdutoAddComponent
   ],
   imports: [// imports
     BrowserModule,

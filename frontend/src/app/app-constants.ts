@@ -18,4 +18,7 @@ export class AppConstants {
 	// URL Relatorio
 	public static get urlRelatorio(): string {return this.urlUsuario + "relatorio/"}
 
+	// URL Produto
+	public static get urlProduto(): string {return this.urlBase + "produto/"}
+
 }

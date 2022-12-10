@@ -1,0 +1,34 @@
+
+
+<form style="padding: 3%;" #formValidate="ngForm" >
+
+    <h2>Tela de Produto</h2>
+    <br>
+  
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input [(ngModel)]="produto.id" id="id" name="id" type="text" class="form-control" readonly >
+    </div>
+  
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <span style="color:red; font-size: 23px;" *ngIf="nomeValidate.invalid"> * </span>
+      <input [(ngModel)]="produto.nome" id="nome" name="nome" #nomeValidate="ngModel" type="text" required="true" class="form-control" >
+    </div>
+  
+
+    <div class="form-group">
+      <label for="login">Quantidade</label>
+      <span style="color:red; font-size: 23px;" *ngIf="quantidadeValidate.invalid"> * </span>
+      <input [(ngModel)]="produto.quantidade" id="quantidade" name="login" #quantidadeValidate="ngModel" type="text" required="true" class="form-control" >
+    </div>
+  
+
+
+  
+    <button (click)='salvarProduto()' [disabled]="formValidate.invalid" type="submit" class="btn btn-primary">Salvar</button>
+    <button (click)='novoProduto()' type="button" class="btn btn-primary" style="margin-left: 5px;">Novo</button>
+    <button [routerLink]="['/produtoList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para produtos</button>
+  
+  </form>
+  
