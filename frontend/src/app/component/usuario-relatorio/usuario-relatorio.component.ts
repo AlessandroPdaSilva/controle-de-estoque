@@ -95,8 +95,32 @@ export class UsuarioRelatorioComponent implements OnInit {
   ngOnInit() { }
 
   imprimeRelatorio(){
-    console.log(this.usuarioRelatorio)
+    console.log(this.usuarioRelatorio.dataFinal)
 
+    if(this.usuarioRelatorio.dataFinal == null){
+
+      // Pegar data atual
+      var data = new Date();
+      var dia = String(data.getDate()).padStart(2, '0');
+      var mes = String(data.getMonth() + 1).padStart(2, '0');
+      var ano = data.getFullYear();
+      var dataAtual = dia + '/' + mes + '/' + ano;
+    
+
+      // injetando em datafinal
+      this.usuarioRelatorio.dataFinal = dataAtual
+
+    }
+
+    if(this.usuarioRelatorio.dataInicial == null){
+      var dataPadrao = '01/01/1800'
+      this.usuarioRelatorio.dataInicial = dataPadrao
+
+      // injetando em datainicial
+      console.log(this.usuarioRelatorio.dataInicial)
+    }
+
+    // enviando para a API
     this.usuarioService.downloadPdfRelatorioParam(this.usuarioRelatorio);
     
   }
