@@ -44,7 +44,35 @@
   
     </div>
    
-  <button (click)="imprimeRelatorio()" type="button" class="btn btn-primary" style="margin-left: 5px;">Gerar PDF</button>
+  
+  <button (click)="imprimeRelatorio()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#relatorioModal" style="margin-left: 5px;">
+    Gerar PDF
+  </button>
   <button [routerLink]="['/usuarioList']" routerLinkActive="router-link-active" type="button" class="btn btn-primary" style="margin-left: 5px;">Voltar para usuarios</button>
 
 </form>
+
+
+<!-- MODAL-->
+<div class="modal fade" id="relatorioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="min-width: 90%; min-height: 90%; height: 90%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Relatorio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <iframe #iframeRelatorio id="pdf" width="100%" height="500" frameborder="0" allowtransparency="true" ></iframe>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+

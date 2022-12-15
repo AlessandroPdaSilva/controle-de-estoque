@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { HttpClient } from '@angular/common/http';
+import { AppConstants } from '../../app-constants';
 import { Usuario } from 'src/app/model/usuario';
 import { Observable } from 'rxjs';
 
@@ -17,7 +19,9 @@ export class UsuarioComponent implements OnInit {
   listaUsuario:any;
   campoPesquisa= new String;
 
-  constructor(private usuarioService: UsuarioService){}
+  @ViewChild('iframeRelatorio') iframeRelatorio!: any;
+
+  constructor(private usuarioService: UsuarioService,private http: HttpClient){}
 
   
 
@@ -91,7 +95,17 @@ export class UsuarioComponent implements OnInit {
 
   // IMPRIME RELATORIO
   imprimeRelatorio(){
-    return this.usuarioService.downloadPdfRelatorio();
+    this.downloadPdfRelatorio();
+  }
+
+  downloadPdfRelatorio(){
+    return this.http.get(AppConstants.urlRelatorio, {responseType: 'text'}).subscribe(data => {
+      //document.querySelector('iframe').src = data;
+      //window.open(data)
+
+      this.iframeRelatorio.nativeElement.contentDocument.location.href = data
+      console.log(this.iframeRelatorio)
+    })
   }
 
   

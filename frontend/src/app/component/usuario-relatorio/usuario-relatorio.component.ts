@@ -1,8 +1,10 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { NgbDateParserFormatter, NgbDateStruct, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { UsuarioRelatorio } from 'src/app/model/usuarioRelatorio';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { HttpClient } from '@angular/common/http';
+import { AppConstants } from '../../app-constants';
 
 
 
@@ -89,7 +91,9 @@ export class UsuarioRelatorioComponent implements OnInit {
 
   usuarioRelatorio = new UsuarioRelatorio();
 
-  constructor(private usuarioService: UsuarioService) { }
+  @ViewChild('iframeRelatorio') iframeRelatorio!: any;
+
+  constructor(private usuarioService: UsuarioService, private http: HttpClient) { }
   
   // INIT 
   ngOnInit() { }
@@ -121,8 +125,21 @@ export class UsuarioRelatorioComponent implements OnInit {
     }
 
     // enviando para a API
-    this.usuarioService.downloadPdfRelatorioParam(this.usuarioRelatorio);
+    this.downloadPdfRelatorioParam(this.usuarioRelatorio);
     
+  }
+
+
+  downloadPdfRelatorioParam(usuarioRelatorio: UsuarioRelatorio){
+    return this.http.post(AppConstants.urlRelatorio, usuarioRelatorio, {responseType: 'text'}).subscribe(data => {
+      //document.querySelector('iframe').src = data;
+      //window.open(data)
+      if(this.iframeRelatorio.nativeElement.contentDocument.location.href == "about:blank"){
+        this.iframeRelatorio.nativeElement.contentDocument.location.href = data
+      }
+      
+      console.log(this.iframeRelatorio)
+    })
   }
   
 }
